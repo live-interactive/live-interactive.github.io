@@ -5,9 +5,9 @@
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
-    <script src="/js/aframe-animation-timeline-component.min.js"></script>
-    <script src="/scripts/startup.js"></script>
-    <link rel="preload" href="/video/live.mp4" as="video" type="video/mp4">
+    <script src="public/js/aframe-animation-timeline-component.min.js"></script>
+    <script src="public/scripts/startup.js"></script>
+    <link rel="preload" href="public/video/live.mp4" as="video" type="video/mp4">
 </head>
 
 
@@ -72,13 +72,13 @@
             </a-timeline>
 
             <video id="Video_Asset_0" crossorigin="use-credentials" preload="auto" controls loop muted
-                webkit-playsinline playsinline src="/videos/live.mp4" type="video/mp4">
+                webkit-playsinline playsinline src="public/videos/live.mp4" type="video/mp4">
 
             </video>
-            <a-asset-item id="heart-asset" src="/models/heart.gltf"></a-asset-item>
-            <a-asset-item id="laptop-asset" src="/models/laptop/scene.gltf"></a-asset-item>
-            <a-asset-item id="portal-asset" src="/models/portal/scene.gltf"></a-asset-item>
-            <a-asset-item id="human-asset" src="/models/StandingGreeting.glb"></a-asset-item>
+            <a-asset-item id="heart-asset" src="public/models/heart.gltf"></a-asset-item>
+            <a-asset-item id="laptop-asset" src="public/models/laptop/scene.gltf"></a-asset-item>
+            <a-asset-item id="portal-asset" src="public/models/portal/scene.gltf"></a-asset-item>
+            <a-asset-item id="human-asset" src="public/models/StandingGreeting.glb"></a-asset-item>
 
             <a-mixin id="text" text="align: center; color: #F8EAFB; width: 6; opacity: 0" rotate="0 0 0"
                 animation__fadein="property: text.opacity; from: 0; to: 1; dur: 3000; easing: linear; autoplay: false"
@@ -89,7 +89,7 @@
             </a-mixin>
 
         </a-asset>
-        <a-marker type="pattern" url="marker/live-marker.patt" id="marker" emitevents="true" button>
+        <a-marker type="pattern" url="public/marker/live-marker.patt" id="marker" emitevents="true" button>
             <!-- <a-marker preset="hiro" id="marker"> -->
             <a-video class="intersectable" src="#Video_Asset_0" id="vid" width="1.5" height="‭1‬" position="0 0.1 0"
                 rotation="270 0 0" color="#FFFFFF" transparent="False"></a-video>
@@ -111,7 +111,7 @@
                     animation__rotate="property:rotation;from:0 0 0;to: 0 360 0;dur:5000; autoplay:false">
                 </a-entity>
                 <a-entity id="human-entity" scale="0.5 0.5 0.5" position="-1.1 0.2 -0.5"
-                    gltf-model="src: url(models/StandingGreeting.glb);" animation-mixer> </a-entity>
+                    gltf-model="src: url(public/models/StandingGreeting.glb);" animation-mixer> </a-entity>
 
 
                 <a-entity id="text1" rotation="-90 0 0" mixin="text" text="value: Welcome to Live-interactive">
@@ -145,6 +145,7 @@
     vid.oncanplay  = (event) => {
  
 };
+    }
 </script>
 <!-- <script>
     // var marker = document.querySelector("#marker");
