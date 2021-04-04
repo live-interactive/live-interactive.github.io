@@ -1,73 +1,161 @@
-<!DOCTYPE html>
+<!doctype HTML>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Image based tracking AR.js demo</title>
-    <!-- import aframe and then ar.js with image tracking / location based features -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-    <!-- style for the loader -->
-    <style>
-      .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+<head>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="/js/aframe-animation-timeline-component.min.js"></script>
+    <script src="/scripts/startup.js"></script>
+    <link rel="preload" href="/video/live.mp4" as="video" type="video/mp4">
+</head>
 
-      .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
-      }
-    </style>
-  </head>
 
-  <body style="margin : 0px; overflow: hidden;">
-    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
-    <div class="arjs-loader">
-      <div>Loading, please wait...</div>
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+    <div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
+        <button id="mutebutton" style='position: absolute; bottom: 10px'>
+            Unmute
+        </button>
     </div>
+    <!-- <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
+        <input type="image" id="fullscreen" src="../fullscreen.png"
+            style='position: absolute; bottom: 0px; right: 35px;'>
+        </input>
+    </div> -->
+    <a-scene checkload embedded arjs="debugUIEnabled: false; sourceType: webcam;" vr-mode-ui='enabled: false'
+        animation-timeline__1="timeline: #myTimeline; loop: true;"
+        animation-timeline__2="timeline: #timeline2;  loop: true;">
+        <a-asset timeout="60000" id="assets">
+            <a-timeline id="timeline2">
+                <a-timeline-animation select="a-entity[id~=heart-entity]" name="rotate"></a-timeline-animation>
+                <a-timeline-animation select="a-entity[id~=laptop-entity]" name="positioninn"></a-timeline-animation>
+                <a-timeline-animation select="a-entity[id~=laptop-entity]" name="rotate"></a-timeline-animation>
+                <a-timeline-animation select="a-entity[id~=laptop-entity]" name="positionino"></a-timeline-animation>
 
-    <!-- a-frame scene -->
-    <a-scene
-      vr-mode-ui="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
-      embedded
-      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: true;">
-	   <a-assets>
-    <video id="penguin-sledding" autoplay loop="true" src="videos/1.mp4"></video>
-  </a-assets>
-      <!-- a-nft is the anchor that defines an Image Tracking entity -->
-      <!-- on 'url' use the path to the Image Descriptors created before. -->
-      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
-      <a-nft
-        type="nft"
-        url="desc/1"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance=".01"
-        smoothThreshold="5">
-          <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
- <a-entity
-                gltf-model='models/lieutenantHead.gltf'
-                scale="2 2 2"
-                position="0 0 0"
-                >
+                <a-timeline-animation select="a-entity[id~=heart-entity]" name="rotate"></a-timeline-animation>
+
+                <a-timeline-animation select="a-entity[id~=portal-entity]" name="positioninn"></a-timeline-animation>
+                <a-timeline-animation select="a-entity[id~=portal-entity]" name="rotate"></a-timeline-animation>
+                <a-timeline-animation select="a-entity[id~=portal-entity]" name="positionino"></a-timeline-animation>
+
+                <a-timeline-animation select="a-entity[id~=heart-entity]" name="rotate"></a-timeline-animation>
+
+            </a-timeline>
+            <a-timeline id="myTimeline">
+
+                <a-timeline-animation select="#text1" name="togglevisible"></a-timeline-animation>
+                <a-timeline-animation select="#text1" name="fadein"></a-timeline-animation>
+                <a-timeline-animation select="#text1" name="fadeout"></a-timeline-animation>
+                <a-timeline-animation select="#text1" name="togglevisibleoff"></a-timeline-animation>
+                <a-timeline-group>
+                    <a-timeline-animation select="#text2" name="togglevisible"></a-timeline-animation>
+                    <a-timeline-animation select="#text2" name="fadein"></a-timeline-animation>
+                    <a-timeline-animation select="#text2" name="textcolor"></a-timeline-animation>
+                </a-timeline-group>
+                <a-timeline-animation select="#text2" name="fadeout"></a-timeline-animation>
+                <a-timeline-animation select="#text2" name="togglevisibleoff"></a-timeline-animation>
+                <a-timeline-animation select="#text3" name="togglevisible"></a-timeline-animation>
+                <a-timeline-group>
+                    <a-timeline-animation select="#text3" name="fadein"></a-timeline-animation>
+                    <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation>
+                </a-timeline-group>
+                <a-timeline-animation select="#text3" name="positionout"></a-timeline-animation>
+                <a-timeline-animation select="#text3" name="togglevisibleoff"></a-timeline-animation>
+
+                <a-timeline-animation select="#text4" name="togglevisible"></a-timeline-animation>
+
+                <a-timeline-group>
+                    <a-timeline-animation select="#text4" name="fadein"></a-timeline-animation>
+                </a-timeline-group>
+
+                <a-timeline-animation select="#text4" name="fadeout" offset="500"></a-timeline-animation>
+            </a-timeline>
+
+            <video id="Video_Asset_0" crossorigin="use-credentials" preload="auto" controls loop muted
+                webkit-playsinline playsinline src="/videos/live.mp4" type="video/mp4">
+
+            </video>
+            <a-asset-item id="heart-asset" src="/models/heart.gltf"></a-asset-item>
+            <a-asset-item id="laptop-asset" src="/models/laptop/scene.gltf"></a-asset-item>
+            <a-asset-item id="portal-asset" src="/models/portal/scene.gltf"></a-asset-item>
+            <a-asset-item id="human-asset" src="/models/StandingGreeting.glb"></a-asset-item>
+
+            <a-mixin id="text" text="align: center; color: #F8EAFB; width: 6; opacity: 0" rotate="0 0 0"
+                animation__fadein="property: text.opacity; from: 0; to: 1; dur: 3000; easing: linear; autoplay: false"
+                animation__fadeout="property: text.opacity; from: 1; to: 0; dur: 3000; easing: linear; autoplay: false"
+                animation__togglevisible="property: visible; from: false; to: true; dur: 1; autoplay: false"
+                animation__togglevisibleoff="property: visible; from: true; to: false; dur: 1; autoplay: false"
+                position="0 1 -0.6" visible="false">
+            </a-mixin>
+
+        </a-asset>
+        <a-marker type="pattern" url="marker/live-marker.patt" id="marker" emitevents="true" button>
+            <!-- <a-marker preset="hiro" id="marker"> -->
+            <a-video class="intersectable" src="#Video_Asset_0" id="vid" width="1.5" height="‭1‬" position="0 0.1 0"
+                rotation="270 0 0" color="#FFFFFF" transparent="False"></a-video>
+            <a-entity id="container-entity" visible="false">
+
+                <a-entity id="heart-entity" scale="0.007 0.007 0.007" position="0.6 0.2 -0.6" gltf-model="#heart-asset"
+                    animation__scalea="property: scale;from:0.01 0.01 0.01; to: 0.02  0.02  0.02;  dir:alternate dur: 5000;   autoplay:false"
+                    animation__scaleb="property: scale;from: 0.02  0.02  0.02; to: 0.01 0.01 0.01;  dir:alternate dur: 2000;  autoplay:false"
+                    animation__rotate="property:rotation;from:0 0 0;to: 0 360 0;dur:2000; autoplay:false">
+                </a-entity>
+                <a-entity id="laptop-entity" scale="0 0 0" position="0 0.3 0 " gltf-model="#laptop-asset"
+                    animation__positioninn="property: scale;from:0 0 0; to: 0.5  0.5  0.5;  dir:alternate dur: 5000; easing:easeOutBack;   autoplay:false"
+                    animation__positionino="property: scale;from: 0.5  0.5 0.5; to: 0.0 0.0 0.0;  dir:alternate dur: 5000;  autoplay:false"
+                    animation__rotate="property:rotation;from:0 0 0;to: 0 360 0;dur:5000; autoplay:false">
+                </a-entity>
+                <a-entity id="portal-entity" scale="0 0 0" position="0 0.3 0 " gltf-model="#portal-asset"
+                    animation__positioninn="property: scale;from:0 0 0; to: 0.1  0.1  0.1;  dir:alternate dur: 5000; easing:easeOutBack;   autoplay:false"
+                    animation__positionino="property: scale;from: 0.1  0.1 0.1; to: 0.0 0.0 0.0;  dir:alternate dur: 5000;  autoplay:false"
+                    animation__rotate="property:rotation;from:0 0 0;to: 0 360 0;dur:5000; autoplay:false">
+                </a-entity>
+                <a-entity id="human-entity" scale="0.5 0.5 0.5" position="-1.1 0.2 -0.5"
+                    gltf-model="src: url(models/StandingGreeting.glb);" animation-mixer> </a-entity>
+
+
+                <a-entity id="text1" rotation="-90 0 0" mixin="text" text="value: Welcome to Live-interactive">
+                </a-entity>
+                <a-entity id="text2" rotation="-90 0 0" mixin="text" text="value:Make it Live; opacity: 0"
+                    animation__textcolor="property: text.color; from: #F8EAFB; to: #A659C1; dur: 2500; autoplay: false">
+                </a-entity>
+                <a-entity id="text3" rotation="-90 0 0" mixin="text" text="value:we are live" position="0 -10 0"
+                    animation__positionin="property: position; to: 0 1 0; dur: 2500; autoplay: false"
+                    animation__positionout="property: position; from: 0 1 0; to: -10 2 -3; dur: 3500; autoplay: false">
+                </a-entity>
+                <a-entity id="text4" rotation="-90 0 0" mixin="text" text="value: we change dreams into reality">
+                </a-entity>
             </a-entity>
-			  <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video>
-
-      </a-nft>
-      <!-- static camera that moves according to the device movemenents -->
-      <a-entity camera></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
     </a-scene>
-  </body>
+</body>
+
 </html>
+<script>
+    var vid = document.getElementById("Video_Asset_0");
+
+    vid.onplaying = function () {
+      //  alert("The video is now playing");
+        var mainentity = document.querySelector("#container-entity");
+    
+        mainentity.setAttribute("visible", true);
+        
+ 
+    vid.oncanplay  = (event) => {
+ 
+};
+</script>
+<!-- <script>
+    // var marker = document.querySelector("#marker");
+    // var Video_0 = document.querySelector("#Video_Asset_0");
+
+    // marker.addEventListener("markerFound", function (evt) {
+    //     markerFound = 1;
+    //     // Video_0.play();
+    // });
+    // marker.addEventListener("markerLost", function (evt) {
+    //     markerFound = 0;
+    //     //  Video_0.pause();
+    // });
+</script> -->
