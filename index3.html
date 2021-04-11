@@ -13,22 +13,22 @@
       this.vid.play();
     });
 });
-        AFRAME.registerComponent('videohandler', {
-            init: function () {
-                var marker = this.el;
-                this.vid = document.querySelector("#vid");
+        // AFRAME.registerComponent('videohandler', {
+        //     init: function () {
+        //         var marker = this.el;
+        //         this.vid = document.querySelector("#vid");
 
-                marker.addEventListener('markerFound', function () {
-                    this.toggle = true;
-                    this.vid.play();
-                }.bind(this));
+        //         marker.addEventListener('markerFound', function () {
+        //             this.toggle = true;
+        //             this.vid.play();
+        //         }.bind(this));
 
-                marker.addEventListener('markerLost', function () {
-                    this.toggle = false;
-                    this.vid.pause();
-                }.bind(this));
-            },
-        });
+        //         marker.addEventListener('markerLost', function () {
+        //             this.toggle = false;
+        //             this.vid.pause();
+        //         }.bind(this));
+        //     },
+        // });
     </script>
   </head>
   <body>
@@ -62,7 +62,7 @@
         <!-- <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"> -->
             <a-video
             src="#vid"
-            scale="1 1 1"
+            scale="1 0.7 1"
             position="0 0.1 0"
             rotation="0 0 0"
             class="clickable"
@@ -70,10 +70,10 @@
         ></a-video>
         <a-entity
             id="bowser-model"
-            scale="0.6418584213006208 0.6418584213006208 0.6418584213006208"
+            scale="0.2 0.2 0.2"
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
-            position="1 1 0"
+            position="0.5 0.5 0"
         ></a-entity>
       </a-entity>
     </a-scene>
