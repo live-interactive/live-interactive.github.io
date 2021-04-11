@@ -47,6 +47,10 @@
                     muted
                     playsinline
                 ></video>
+                <a-asset-item
+                id="animated-asset"
+                src="assets/asset.gltf"
+            ></a-asset-item>
             </a-assets>
 
             <a-marker
@@ -71,6 +75,14 @@
                     class="clickable"
                     gesture-handler
                 ></a-video>
+                <a-entity
+                    id="bowser-model"
+                    scale="0.6418584213006208 0.6418584213006208 0.6418584213006208"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
             </a-marker>
 
             <a-entity camera></a-entity>
