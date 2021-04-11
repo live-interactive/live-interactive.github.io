@@ -5,18 +5,15 @@
     
     <script>
             const arTarget = document.querySelector('#targetAR');
-
+            arTarget.addEventListener("targetFound", event => {
+                this.vid = document.querySelector("#vid");
+      alert("target found");
+      this.vid.play();
+    });
         AFRAME.registerComponent('videohandler', {
             init: function () {
                 var marker = this.el;
                 this.vid = document.querySelector("#vid");
-                
-                arTarget.addEventListener("targetFound", event => {
-      alert("target found");
-      this.toggle = true;
-                    this.vid.play();
-                
-    });
 
                 marker.addEventListener('markerFound', function () {
                     this.toggle = true;
