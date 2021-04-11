@@ -9,7 +9,6 @@
             const arTarget = document.querySelector('#targetAR');
             arTarget.addEventListener("targetFound", event => {
                 this.vid = document.querySelector("#vid");
-      alert("target found");
       this.vid.play();
     });
 });
@@ -73,6 +72,7 @@
             scale="0.2 0.2 0.2"
             animation-mixer="loop: repeat"
             gltf-model="#animated-asset"
+            rotation="90 0 0"
             position="0.5 0.5 0"
         ></a-entity>
       </a-entity>
