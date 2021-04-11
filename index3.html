@@ -4,12 +4,15 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/dist/mindar.prod.js"></script>
     
     <script>
+              document.addEventListener("DOMContentLoaded", function() {
+
             const arTarget = document.querySelector('#targetAR');
             arTarget.addEventListener("targetFound", event => {
                 this.vid = document.querySelector("#vid");
       alert("target found");
       this.vid.play();
     });
+});
         AFRAME.registerComponent('videohandler', {
             init: function () {
                 var marker = this.el;
