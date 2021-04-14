@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/dist/mindar.prod.js"></script>
+    
+    <script>
+              document.addEventListener("DOMContentLoaded", function() {
+
+            const arTarget = document.querySelector('#targetAR');
+            arTarget.addEventListener("targetFound", event => {
+                this.vid = document.querySelector("#vid");
+      this.vid.play();
+    });
+});
+        // AFRAME.registerComponent('videohandler', {
+        //     init: function () {
+        //         var marker = this.el;
+        //         this.vid = document.querySelector("#vid");
+
+        //         marker.addEventListener('markerFound', function () {
+        //             this.toggle = true;
+        //             this.vid.play();
+        //         }.bind(this));
+
+        //         marker.addEventListener('markerLost', function () {
+        //             this.toggle = false;
+        //             this.vid.pause();
+        //         }.bind(this));
+        //     },
+        // });
+    </script>
+  </head>
+  <body>
+    <a-scene mindar="imageTargetSrc: assets/targets.mind; showStats: true;" color-space="sRGB" 
+    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+     device-orientation-permission-ui="enabled: false">
+        <a-assets>
+        <video
+        id="vid"
+        src="assets/logoloop.mp4"
+        preload="auto"
+        response-type="arraybuffer"
+        loop
+        crossorigin
+        webkit-playsinline
+        autoplay
+        muted
+        playsinline
+    ></video>
+    <a-asset-item
+    id="animated-asset"
+    src="assets/ramadan/ramadan.gltf"
+></a-asset-item>
+        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/card.png" />
+        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/softmind/scene.gltf"></a-asset-item>
+      </a-assets>
+    
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    
+      <a-entity id="targetAR" mindar-image-target="targetIndex: 0">
+        <!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane> -->
+        <!-- <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"> -->
+            <a-video
+            src="#vid"
+            scale="1 0.7 1"
+            position="0 0.1 0"
+            rotation="0 0 0"
+            class="clickable"
+            gesture-handler
+        ></a-video>
+        <a-entity
+            id="bowser-model"
+            scale="0.2 0.2 0.2"
+          animation-mixer="loop: repeat"
+            gltf-model="#animated-asset"
+            rotation="90 0 0"
+            position="0 0 0"
+            animation="property: position; to: 0 0.5 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+        ></a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
