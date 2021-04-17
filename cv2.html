@@ -224,15 +224,18 @@
 	</div>
       </div>
 
-      <a-scene mindar="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/card.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-scene mindar="imageTargetSrc: assets/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;"
+       embedded color-space="sRGB" renderer="colorManagement: true,
+       physicallyCorrectLights" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
         <a-assets>
           <img id="card" src="./assets/card-example/card.png" />
-          <img id="icon-web" src="./assets/card-example/icons/web.png" />
-          <img id="icon-location" src="./assets/card-example/icons/location.png" />
-          <img id="icon-profile" src="./assets/card-example/icons/profile.png" />
-          <img id="icon-phone" src="./assets/card-example/icons/phone.png" />
-          <img id="icon-email" src="./assets/card-example/icons/email.png" />
-          <img id="icon-play" src="./assets/card-example/icons/play.png" />
+          <img id="icon-linkedin" src="./assets/icons/linkedin.png" />
+          <img id="icon-facebook" src="./assets/icons/facebook.png" />
+          <img id="icon-profile" src="./assets/icons/profile.png" />
+          <img id="icon-phone" src="./assets/icons/phone.png" />
+          <img id="icon-email" src="./assets/icons/email.png" />
+          <img id="icon-play" src="./assets/icons/play.png" />
           <img id="icon-left" src="./assets/card-example/icons/left.png" />
           <img id="icon-right" src="./assets/card-example/icons/right.png" />
           <img id="paintandquest-preview" src="./assets/card-example/portfolio/paintandquest-preview.png" />
@@ -244,7 +247,8 @@
           <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/examples/assets/card-example/softmind/scene.gltf"></a-asset-item>
         </a-assets>
 
-        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
+         raycaster="far: 10000; objects: .clickable">
         </a-camera>
 
         <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
@@ -274,7 +278,7 @@
             animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
           ></a-image>
 
-          <a-image visible=false id="web-button" class="clickable" src="#icon-web" alpha-test="0.5" position="-0.14 -0.5 0" height="0.15" width="0.15"
+          <a-image visible=false id="web-button" class="clickable" src="#icon-linkedin" alpha-test="0.5" position="-0.14 -0.5 0" height="0.15" width="0.15"
             animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
           ></a-image>
 
@@ -282,7 +286,7 @@
             animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
           ></a-image>
 
-          <a-image visible=false id="location-button" class="clickable" src="#icon-location" position="0.42 -0.5 0" height="0.15" width="0.15"
+          <a-image visible=false id="location-button" class="clickable" src="#icon-facebook" position="0.42 -0.5 0" height="0.15" width="0.15"
             animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
           ></a-image>
 
