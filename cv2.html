@@ -119,7 +119,7 @@
                 z += 0.008;
                 if (z >= 0.3) {
                     clearInterval(id);
-                    
+
                 }
                 avatar.setAttribute("position", "0 -0.25 " + z);
             }, 10);
@@ -129,9 +129,19 @@
             init: function () {
                 this.el.addEventListener('targetFound', event => {
                     console.log("target found");
-                showInfo();
-                showAvatar();
+                    showInfo();
+                    showAvatar();
+                    const testVideo = document.createElement("video");
+                    const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
+                    if (canplayWebm == "") {
+                        document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-mp4");
+                        document.querySelector("#paintandquest-video-mp4").play();
+                    } else {
+                        document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-webm");
+                        document.querySelector("#paintandquest-video-webm").play();
+                    }
                 });
+
                 //   showAvatar(() => {
                 //         setTimeout(() => {
                 //             showPortfolio(() => {
@@ -330,9 +340,9 @@
                 </a-image>
 
                 <a-image visible=false id="be-button" class="clickable" src="#icon-be" position="0.8 0.5 0"
-                height="0.15" width="0.2"
-                animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-image>
+                    height="0.15" width="0.2"
+                    animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+                </a-image>
 
                 <a-gltf-model id="avatar" rotation="0 0 0" position="0 -0.25 0" scale="0.04 0.04 0.04"
                     src="#avatarModel"></a-gltf-model>
