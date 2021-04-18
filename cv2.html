@@ -154,13 +154,10 @@
                 // });
                 this.el.addEventListener('targetLost', event => {
                     console.log("target found");
-                    if (canplayWebm == "") {
+                  
                         document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-mp4");
                         document.querySelector("#paintandquest-video-mp4").pause();
-                    } else {
-                        document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-webm");
-                        document.querySelector("#paintandquest-video-webm").pause();
-                    }
+                    
                 });
                 //this.el.emit('targetFound');
             }
@@ -304,7 +301,7 @@
                     <!-- <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0"></a-text> -->
                     <a-entity id="portfolio-item0">
                         <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.552"
-                            position="0 0 0"></a-video>
+                            position="0 -0.7 0"></a-video>
                         <!-- <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview"
                             alpha-test="0.5" position="0 -0.7 0" height="0.552" width="1">
                         </a-image> -->
