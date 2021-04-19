@@ -60,10 +60,10 @@
             });
         }
 
-        const showPortfolio = (done) => {
+     /*   const showPortfolio = (done) => {
             const portfolio = document.querySelector("#portfolio-panel");
-            const portfolioLeftButton = document.querySelector("#portfolio-left-button");
-            const portfolioRightButton = document.querySelector("#portfolio-right-button");
+           // const portfolioLeftButton = document.querySelector("#portfolio-left-button");
+          //  const portfolioRightButton = document.querySelector("#portfolio-right-button");
             const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
 
             let y = 0;
@@ -110,7 +110,7 @@
                 }
                 portfolio.setAttribute("position", "0 " + y + " -0.01");
             }, 10);
-        }
+        }*/
 
         const showAvatar = (onDone) => {
             const avatar = document.querySelector("#avatar");
@@ -127,15 +127,16 @@
 
         AFRAME.registerComponent('mytarget', {
             init: function () {
+                var vid=  document.querySelector("#video-mp4");
                 this.el.addEventListener('targetFound', event => {
                     console.log("target found");
                     showInfo();
                     showAvatar();
-                    const testVideo = document.createElement("video");
+                  //  const testVideo = document.createElement("video");
                     //const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
                     //  if (canplayWebm == "") {
                     //  document.querySelector("#video-link").setAttribute("src", "#video-mp4");
-                    document.querySelector("#video-mp4").play();
+                    vid.play();
                     /*  } else {
                           document.querySelector("#video-link").setAttribute("src", "#paintandquest-video-webm");
                           document.querySelector("#paintandquest-video-webm").play();
@@ -155,7 +156,7 @@
                 this.el.addEventListener('targetLost', event => {
                     console.log("target lost");
                     //   document.querySelector("#video-link").setAttribute("src", "#video-mp4");
-                    document.querySelector("#video-mp4").pause();
+                    vid.pause();
                 });
                 //this.el.emit('targetFound');
             }
