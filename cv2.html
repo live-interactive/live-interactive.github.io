@@ -128,19 +128,7 @@
         AFRAME.registerComponent('mytarget', {
             
             init: function () {
-                paintandquestPreviewButton.addEventListener('click', () => {
-                        paintandquestPreviewButton.setAttribute("visible", false);
-                        const testVideo = document.createElement("video");
-                        const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
-                        if (canplayWebm == "") {
-                            document.querySelector("#video-link").setAttribute("src", "#video-mp4");
-                            document.querySelector("#video-mp4").play();
-                        } else {
-                            document.querySelector("#video-link").setAttribute("src", "#paintandquest-video-webm");
-                            document.querySelector("#paintandquest-video-webm").play();
-                        }
-                    });
-
+                
                 var vid=  document.querySelector("#video-mp4");
                 this.el.addEventListener('targetFound', event => {
                     console.log("target found");
