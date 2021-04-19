@@ -133,13 +133,13 @@
                     showAvatar();
                     const testVideo = document.createElement("video");
                     //const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
-                  //  if (canplayWebm == "") {
-                        document.querySelector("#video-link").setAttribute("src", "#video-mp4");
-                        document.querySelector("#video-mp4").play();
-                  /*  } else {
-                        document.querySelector("#video-link").setAttribute("src", "#paintandquest-video-webm");
-                        document.querySelector("#paintandquest-video-webm").play();
-                    }*/
+                    //  if (canplayWebm == "") {
+                    //  document.querySelector("#video-link").setAttribute("src", "#video-mp4");
+                    document.querySelector("#video-mp4").play();
+                    /*  } else {
+                          document.querySelector("#video-link").setAttribute("src", "#paintandquest-video-webm");
+                          document.querySelector("#paintandquest-video-webm").play();
+                      }*/
                 });
 
                 //   showAvatar(() => {
@@ -153,9 +153,9 @@
                 //     });
                 // });
                 this.el.addEventListener('targetLost', event => {
-                    console.log("target found");
-                     //   document.querySelector("#video-link").setAttribute("src", "#video-mp4");
-                        document.querySelector("#video-mp4").pause();
+                    console.log("target lost");
+                    //   document.querySelector("#video-link").setAttribute("src", "#video-mp4");
+                    document.querySelector("#video-mp4").pause();
                 });
                 //this.el.emit('targetFound');
             }
@@ -278,10 +278,8 @@
                 <img id="icon-left" src="./assets/card-example/icons/left.png" />
                 <img id="icon-right" src="./assets/card-example/icons/right.png" />
                 <img id="paintandquest-preview" src="./assets/logovid.jpg" />
-                <video id="video-mp4" autoplay="true" loop="true"
-                    src="./assets/videos/live.mp4"></video>
-                <video id="paintandquest-video-webm" autoplay="true" loop="true"
-                    src="./assets/videos/live.mp4"></video>
+                <video id="video-mp4" autoplay="true" loop="true" src="./assets/videos/live.mp4"></video>
+                <video id="paintandquest-video-webm" autoplay="true" loop="true" src="./assets/videos/live.mp4"></video>
                 <img id="coffeemachine-preview" src="./assets/card-example/portfolio/coffeemachine-preview.png" />
                 <img id="peak-preview" src="./assets/card-example/portfolio/peak-preview.png" />
 
